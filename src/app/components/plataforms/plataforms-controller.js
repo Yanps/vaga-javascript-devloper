@@ -35,7 +35,6 @@
     }
 
     function goToPlans(sku) {
-      console.log(sku);
       $location.path('/planos/' + sku);
     }
   }
