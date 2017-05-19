@@ -5,35 +5,35 @@
       <div class="panel">
         <div class="panel-heading">Dados Pessoais</div>
         <div class="panel-block">
-          <form class="form">
+          <form class="form" name="userDataForm" ng-submit="$ctrl.sendData($ctrl.formData)">
             
             <div class="control">
               <label class="label">Nome</label>
-              <input class="input" type="text" name="nome" placeholder="Text input" ng-model="$ctrl.formData.name" required>
+              <input class="input" type="text" name="nome" placeholder="Text input" ng-model="$ctrl.formData.name" required ng-disabled="$ctrl.disabled">
             </div>       
             
             <div class="control">
               <label class="label">E-mail</label>
-              <input class="input" type="email" name="email" placeholder="Text input" ng-model="$ctrl.formData.email" required>
+              <input class="input" type="email" name="email" placeholder="Text input" ng-model="$ctrl.formData.email" required ng-disabled="$ctrl.disabled">
             </div>
             
             <div class="control">
               <label class="label">Nascimento</label>
-              <input class="input" type="text" name="birthdate" placeholder="Text input" ng-model="$ctrl.formData.birthdate" required mask="19/39/9999" restrict="reject">
+              <input class="input" type="text" name="birthdate" placeholder="Text input" ng-model="$ctrl.formData.birthdate" required ng-disabled="$ctrl.disabled" mask="19/39/9999" restrict="reject">
             </div>
 
             <div class="control">
               <label class="label">CPF</label>
-              <input class="input" type="text" name="cpf" placeholder="Text input" ng-model="$ctrl.formData.cpf" required mask="999.999.999-99">
+              <input class="input" type="text" name="cpf" placeholder="Text input" ng-model="$ctrl.formData.cpf" required ng-disabled="$ctrl.disabled" mask="999.999.999-99">
             </div>
 
             <div class="control">
               <label class="label">Telefone</label>
-              <input class="input" type="text" name="phone" placeholder="Text input" ng-model="$ctrl.formData.phone" required mask="(99) 9?9999-9999">
+              <input class="input" type="text" name="phone" placeholder="Text input" ng-model="$ctrl.formData.phone" required ng-disabled="$ctrl.disabled" mask="(99) 9?9999-9999">
             </div>
 
             <div class="control">
-              <button class="button is-primary">Alterar</button>
+              <button class="button is-primary" ng-disabled="userDataForm.$invalid">Alterar</button>
             </div>
           
           </form>

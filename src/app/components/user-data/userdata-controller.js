@@ -12,10 +12,28 @@
     .module('app')
     .controller('UserDataController', UserDataController);
 
-  UserDataController.$inject = [];
+  UserDataController.$inject = ['$log', '$stateParams', 'APIService'];
 
-  function UserDataController() {
+  function UserDataController($log, $stateParams, APIService) {
     var vm = this;
-    vm.formData = {};
+    var plan = $stateParams.plan || '';
+
+    vm.disabled = true; // Impede o formulário de ser enviado antes de os dados do plano serem carregados
+    vm.planInfo = '';
+    vm.sendData = sendData;
+
+    planInfo();
+    function planInfo() {
+      return APIService.get('planos/' + plan).then(function (resp) {
+        var data = resp.data;
+        vm.planInfo = data.planos;
+        vm.disabled = false; // Habilita os dados do formulário
+      });
+    }
+
+    function sendData(formData) {
+      $log.log('DADOS DO USUÁRIO', formData);
+      $log.log('DADOS DO PLANO', angular.toJson(vm.planInfo));
+    }
   }
 })();
