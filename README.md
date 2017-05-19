@@ -6,7 +6,7 @@
 
 ### Requer: Node 6+ && NPM 3+
 Esse projeto foi montado com  Node >= 6.0.0 and NPM => 3.0.0. 
-Verifique as versões usando os comando
+Verifique as versões usando os comandos
 ```
 node --version && npm --version
 ```
