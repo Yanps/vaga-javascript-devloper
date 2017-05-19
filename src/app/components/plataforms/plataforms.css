@@ -5,6 +5,10 @@
 */
 
 /* 
-    
+   Tabela de resultados 
 */
+
+.clickble-row {
+    cursor: pointer;
+}
 

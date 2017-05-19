@@ -14,11 +14,12 @@
 
   PlataformsController.$inject = ['APIService', '$location'];
 
-  function PlataformsController(APIService) {
+  function PlataformsController(APIService, $location) {
     var vm = this;
     vm.error = false;
     vm.plataforms = {};
     vm.loading = true;
+    vm.goToPlans = goToPlans;
 
     listPlataforms();
 
@@ -31,6 +32,11 @@
       }).then(function () {
         vm.loading = false;
       });
+    }
+
+    function goToPlans(sku) {
+      console.log(sku);
+      $location.path('/planos/' + sku);
     }
   }
 })();

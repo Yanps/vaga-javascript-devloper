@@ -19,7 +19,7 @@
           <tr ng-show="$ctrl.loading">
             <td colspan="3">Carragando plataformas</td>
           </tr>
-          <tr ng-repeat="plataform in $ctrl.plataforms">
+          <tr ng-repeat="plataform in $ctrl.plataforms" ng-click="$ctrl.goToPlans(plataform.sku)" class="clickble-row">
             <td>{{plataform.sku}}</td>
             <td>{{plataform.nome}}</td>
             <td>{{plataform.descricao}}</td>
