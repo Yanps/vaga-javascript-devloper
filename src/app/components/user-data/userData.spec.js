@@ -19,8 +19,8 @@ describe('userData component', function () {
     expect(element).not.toBeNull();
   }));
 
-  it('Testa se o texto está correto', function () {
-    var text = controller.text;
-    expect(text).toBe('User data');
+  it('Verifica se o objeto formData está definido', function () {
+    var data = controller.formData;
+    expect(data).toBeDefined();
   });
 });

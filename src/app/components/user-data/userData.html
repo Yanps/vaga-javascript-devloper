@@ -1,40 +1,41 @@
 <header class="header" ng-include="'app/commons/views/header.html'"></header>
-<section class="section">
+<section class="section component component-user-data">
   <div class="container">
     <div class="column is-12">
       <div class="panel">
         <div class="panel-heading">Dados Pessoais</div>
         <div class="panel-block">
-          <form style="width: 100%;">
+          <form class="form">
             
             <div class="control">
               <label class="label">Nome</label>
-              <input class="input" type="text" placeholder="Text input">
+              <input class="input" type="text" name="nome" placeholder="Text input" ng-model="$ctrl.formData.name" required>
             </div>       
             
             <div class="control">
               <label class="label">E-mail</label>
-              <input class="input" type="email" placeholder="Text input">
+              <input class="input" type="email" name="email" placeholder="Text input" ng-model="$ctrl.formData.email" required>
             </div>
             
             <div class="control">
               <label class="label">Nascimento</label>
-              <input class="input" type="text" placeholder="Text input">
+              <input class="input" type="text" name="birthdate" placeholder="Text input" ng-model="$ctrl.formData.birthdate" required mask="19/39/9999" restrict="reject">
             </div>
 
             <div class="control">
               <label class="label">CPF</label>
-              <input class="input" type="text" placeholder="Text input">
+              <input class="input" type="text" name="cpf" placeholder="Text input" ng-model="$ctrl.formData.cpf" required mask="999.999.999-99">
             </div>
 
             <div class="control">
               <label class="label">Telefone</label>
-              <input class="input" type="text" placeholder="Text input">
+              <input class="input" type="text" name="phone" placeholder="Text input" ng-model="$ctrl.formData.phone" required mask="(99) 9?9999-9999"
             </div>
 
             <div class="control">
               <button class="button is-primary">Alterar</button>
             </div>
+          
           </form>
         </div>
       </div>

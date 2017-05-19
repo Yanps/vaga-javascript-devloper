@@ -16,6 +16,6 @@
 
   function UserDataController() {
     var vm = this;
-    vm.text = 'User data';
+    vm.formData = {};
   }
 })();
