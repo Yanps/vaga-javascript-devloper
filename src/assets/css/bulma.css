@@ -3028,6 +3028,10 @@ input[type="submit"].button {
   background-color: whitesmoke;
 }
 
+.table .clickble-row {
+  cursor: pointer;
+}
+
 .tag {
   -webkit-box-align: center;
       -ms-flex-align: center;

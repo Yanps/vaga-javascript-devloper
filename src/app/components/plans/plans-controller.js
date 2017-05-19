@@ -12,10 +12,30 @@
     .module('app')
     .controller('PlansController', PlansController);
 
-  PlansController.$inject = [];
+  PlansController.$inject = ['$stateParams', '$location', 'APIService'];
 
-  function PlansController() {
+  function PlansController($stateParams, $location, APIService) {
     var vm = this;
-    vm.text = 'Plans';
+    vm.plataformSKU = $stateParams.plataform || '';
+    vm.error = false;
+    vm.plans = {};
+    vm.loading = true;
+    vm.goToUserData = goToUserData;
+
+    listPlans();
+    function listPlans() {
+      return APIService.get('planos/' + vm.plataformSKU).then(function (resp) {
+        var data = resp.data;
+        vm.plans = data.planos;
+      }, function () {
+        vm.error = true;
+      }).then(function () {
+        vm.loading = false;
+      });
+    }
+
+    function goToUserData(plan) {
+      $location.path('/user-data/' + plan);
+    }
   }
 })();

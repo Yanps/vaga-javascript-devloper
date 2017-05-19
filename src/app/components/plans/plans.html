@@ -11,26 +11,34 @@
             <th>Franquia</th>
             <th>Valor</th>
             <th>Situação</th>
+            <th ng-show="$ctrl.plataformSKU !== 'TBT01'">Nome do aparelho</th>
+            <th ng-show="$ctrl.plataformSKU !== 'TBT01'">Valor do aparelho</th>
+            <th ng-show="$ctrl.plataformSKU !== 'TBT01'">Parcelas</th>
+            <th ng-show="$ctrl.plataformSKU !== 'TBT01'">Valor da parcela</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>TBT01</td>
-            <td>Tablet</td>
-            <td>Chip para navegar à vontade</td>
-            <td>Não</td>
+          <tr ng-show="$ctrl.error">
+            <td colspan="3">Houve um erro na pesquisa de planos</td>
           </tr>
-          <tr>
-            <td>CPT02</td>
-            <td>Computador</td>
-            <td>Seu computador|Sempre conectado</td>
-            <td>Não</td>
-          </tr>
-          <tr>
-            <td>WF03</td>
-            <td>WI-FI</td>
-            <td>Internet WI-FI para|casa toda</td>
-            <td>Não</td>
+          <tr ng-show="$ctrl.loading">
+            <td colspan="3">Carragando planos</td>
+          </tr>          
+          <tr ng-repeat="plan in $ctrl.plans" ng-click="$ctrl.goToUserData($ctrl.plataformSKU)" class="clickble-row">
+            <td>{{plan.sku}}</td>
+            <td>{{plan.franquia}}</td>
+            <td>{{plan.valor}}</td>
+            <td>
+                <span ng-if="!plan.ativo" class="tag is-danger">não ativo</span> 
+                <span ng-if="plan.ativo" class="tag is-success">ativo</span>
+            </td>
+            <td ng-show="$ctrl.plataformSKU !== 'TBT01'">{{plan.aparelho.nome}}</td>
+            <td ng-show="$ctrl.plataformSKU !== 'TBT01'">{{'R$ ' + plan.aparelho.valor}}</td>
+            <td ng-show="$ctrl.plataformSKU !== 'TBT01'">{{plan.aparelho.numeroParcelas + 'x'}}</td>
+            <td ng-show="$ctrl.plataformSKU !== 'TBT01'">
+              <span ng-if="plan.aparelho.numeroParcelas > 1">{{'R$ ' + plan.aparelho.valorParcela}}</span>
+              <span ng-if="plan.aparelho.numeroParcelas <= 1">--</span>
+            </td>
           </tr>
         </tbody>
       </table>
