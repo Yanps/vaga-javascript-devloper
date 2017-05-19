@@ -13,20 +13,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>TBT01</td>
-            <td>Tablet</td>
-            <td>Chip para navegar à vontade</td>
+          <tr ng-show="$ctrl.error">
+            <td colspan="3">Houve um erro na pesquisa de plataformas</td>
           </tr>
-          <tr>
-            <td>CPT02</td>
-            <td>Computador</td>
-            <td>Seu computador|Sempre conectado</td>
+          <tr ng-show="$ctrl.loading">
+            <td colspan="3">Carragando plataformas</td>
           </tr>
-          <tr>
-            <td>WF03</td>
-            <td>WI-FI</td>
-            <td>Internet WI-FI para|casa toda</td>
+          <tr ng-repeat="plataform in $ctrl.plataforms">
+            <td>{{plataform.sku}}</td>
+            <td>{{plataform.nome}}</td>
+            <td>{{plataform.descricao}}</td>
           </tr>
         </tbody>
       </table>

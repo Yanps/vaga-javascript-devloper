@@ -12,10 +12,25 @@
     .module('app')
     .controller('PlataformsController', PlataformsController);
 
-  PlataformsController.$inject = [];
+  PlataformsController.$inject = ['APIService', '$location'];
 
-  function PlataformsController() {
+  function PlataformsController(APIService) {
     var vm = this;
-    vm.text = 'Plataforms';
+    vm.error = false;
+    vm.plataforms = {};
+    vm.loading = true;
+
+    listPlataforms();
+
+    function listPlataforms() {
+      return APIService.get('plataformas').then(function (resp) {
+        var data = resp.data;
+        vm.plataforms = data.plataformas;
+      }, function () {
+        vm.error = true;
+      }).then(function () {
+        vm.loading = false;
+      });
+    }
   }
 })();
