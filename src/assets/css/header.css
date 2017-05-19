@@ -1,0 +1,20 @@
+/*
+    //
+    // Estilos do HEADER
+    //
+*/
+
+/* 
+    // Navegação
+    1. define altura automática p/ o container nav
+    2. ajusta a altura logo do "Celular Direto" p/ uma melhor visualização
+*/
+
+.nav {
+    height: auto; /* 1. */
+}
+
+.nav-item .logo {
+     max-height: 2.75em; /* 2. */   
+}
+
